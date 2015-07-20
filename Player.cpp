@@ -9,18 +9,27 @@ Player::Player()//sf::Texture& texture)
 
 	texture.loadFromFile("solider_sprite.png");
 
+
     playerSprite.setTexture(texture);
-     playerSprite.scale(1.5,1.5);
+    // playerSprite.scale(1.5,1.5);
     SetRect(0,0);
-    speed = .1;
+    speed = 1;
     target.x = 10;
     target.y = 10;
     position.x = 10;
     position.y = 10;
+    source.x = 0;
+    source.y = 0;
 }
 
 Player::~Player(){}
 
+void Player::magicAnimation(TextureManager* texturemanager)
+{
+    magicSprite.setTexture(texturemanager->GetTexture(5));
+    magicSprite.setPosition(position.x+5,position.y+5);
+
+};
 //set sprite image to load
 void Player::SetRect(int x,int y)
 {
@@ -53,6 +62,8 @@ void Player::Draw(sf::IntRect rect,sf::RenderWindow* rw)
  playerSprite.setTextureRect(rect);
 
     rw->draw(playerSprite);
+    magicSprite.setTextureRect(sf::IntRect((source.x) * 32, source.y * 32, 32,32));
+    rw->draw(magicSprite);
 //
 //    sf::Texture texture;
 //

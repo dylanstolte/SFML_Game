@@ -1,6 +1,7 @@
 #include "Engine.h"
 #include <SFML\Graphics.hpp>
 #include <iostream>
+
 Engine::Engine()
 {
 
@@ -59,6 +60,10 @@ void Engine::LoadTextures()
 	texture.loadFromFile("treegrow.png");
 	texturemanager->AddTexture(texture);
 
+	texture.loadFromFile("glowingballs.png");
+	texturemanager->AddTexture(texture);
+
+
 
 }
 
@@ -96,39 +101,45 @@ void Engine::ProcessInput()
 
 		if(evt.type == sf::Event::Closed)
 			window->close();
-        if(player1->GetPosition() != player1->GetTarget())
-            break;
-        if((evt.type == sf::Event::MouseButtonPressed) )//&& (mouseDown == false))
-            {
-            int x = camera->GetPosition().x +  sf::Mouse::getPosition(*window).x;
-            int y = camera->GetPosition().y +  sf::Mouse::getPosition(*window).y;
-            camera->GoToCenter(x,y);
-       //   player1->Move(sf::Mouse::getPosition(*window).x,sf::Mouse::getPosition(*window).y);
-           // mouseDown = true;
-            }
-//            frameCounter += frameSpeed * clock->restart().asSeconds();
-//     if(frameCounter >= switchFrame)
-//     {
-//          frameCounter = 0;
-//            player1->SetRect(player1->Getrect().x + 1,player1->Getrect().y);
-//            if(player1->Getrect().x * 57 >= player1->texture.getSize().x)
-//                player1->SetRect(0,player1->Getrect().y);
-//
-//      }
+//        if(player1->GetPosition() != player1->GetTarget())
+//            break;
+//        if((evt.type == sf::Event::MouseButtonPressed) )//&& (mouseDown == false))
+//            {
+//            int x = camera->GetPosition().x +  sf::Mouse::getPosition(*window).x;
+//            int y = camera->GetPosition().y +  sf::Mouse::getPosition(*window).y;
+//            camera->GoToCenter(x,y);
+//       //   player1->Move(sf::Mouse::getPosition(*window).x,sf::Mouse::getPosition(*window).y);
+//           // mouseDown = true;
+//            }
+////            frameCounter += frameSpeed * clock->restart().asSeconds();
+////     if(frameCounter >= switchFrame)
+////     {
+////          frameCounter = 0;
+////            player1->SetRect(player1->Getrect().x + 1,player1->Getrect().y);
+////            if(player1->Getrect().x * 57 >= player1->texture.getSize().x)
+////                player1->SetRect(0,player1->Getrect().y);
+////
+////      }
 	}
 
 	//sprite movement
-    frameCounter1 += 1000 * clock->restart().asSeconds();
+   // frameCounter1 += 1000 * clock->restart().asSeconds();
+
     if((player1->GetPosition() == player1->GetTarget()))// && frameCounter1 >=  .3 )
     {
       //  frameCounter1 =0;
+      if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space))
+      {
+
+        player1->magicAnimation(texturemanager);
+      }
 
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::D))
         {
             // left key is pressed: move our character
             //  player1->playerSprite.move(4,0);
            //   player1->SetRect(,player1->Getrect().y);
-            player1->Move(player1->GetPosition().x+10,player1->GetPosition().y);
+            player1->GoTo(player1->GetPosition().x+10,player1->GetPosition().y);
 
 //                    int x = camera->GetPosition().x+800;
 //                   int y = camera->GetPosition().y;
@@ -136,6 +147,7 @@ void Engine::ProcessInput()
 
 
             {
+
                 player1->SetRect(player1->Getrect().x + 1,Right);
 
             }
@@ -145,7 +157,7 @@ void Engine::ProcessInput()
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::S))
         {
             // left key is pressed: move our character
-            player1->Move(player1->GetPosition().x,player1->GetPosition().y+10);
+            player1->GoTo(player1->GetPosition().x,player1->GetPosition().y+10);
 //                    int x = camera->GetPosition().x;
 //                   int y = camera->GetPosition().y+800;
 //                    camera->GoTo(x,y);
@@ -156,7 +168,7 @@ void Engine::ProcessInput()
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::A))
         {
             // left key is pressed: move our character
-            player1->Move(player1->GetPosition().x-10,player1->GetPosition().y);
+            player1->GoTo(player1->GetPosition().x-10,player1->GetPosition().y);
 //            int x = camera->GetPosition().x-800;
 //            int y = camera->GetPosition().y;
 //            camera->GoTo(x,y)}
@@ -167,8 +179,9 @@ void Engine::ProcessInput()
 
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::W))
         {
+
             // left key is pressed: move our character
-            player1->Move(player1->GetPosition().x,player1->GetPosition().y-10);
+            player1->GoTo(player1->GetPosition().x,player1->GetPosition().y-10);
 //           int x = camera->GetPosition().x;
 //            int y = camera->GetPosition().y-800;
 //            camera->GoTo(x,y);
@@ -255,11 +268,11 @@ void Engine::RenderFrame()
 		{
 			//Get the tile we're drawing
 			tile = currentLevel->GetTile(tileX, tileY);
-			//set tile sprite animations, use clock to time animations
 
-                tile->source.x++;
- if((tile->source.x == 7 )&& (tile->source.y == 10))
-    tile->source.x-- ;
+			//set tile sprite animations, use clock to time animations
+            tile->source.x++;
+            if((tile->source.x == 7 )&& (tile->source.y == 10))
+                tile->source.x-- ;
 
             if(tile->source.x >= 12)//texturemanager->GetTexture(4).getSize().x)
                 {
@@ -280,6 +293,24 @@ void Engine::RenderFrame()
             if(player1->Getrect().x * 56 >= player1->texture.getSize().x)
                 player1->SetRect(0,player1->Getrect().y);
 
+        //magicanimation increment
+ //if((frameCounter >= 200) )
+ {
+
+
+            player1->source.x++;
+        if(player1->source.x >=7)//* 32 >= 384)
+       {
+              player1->source.x = 0;
+              player1->source.y++;
+       }
+        if(player1->source.y >= 5)
+        {
+            player1->source.y = 0;
+            player1->source.x = 0;
+        }
+
+ }
 
     player1->Draw(sf::IntRect(player1->Getrect().x * 56,player1->Getrect().y * 56,56,56),window);
 	window->display();
@@ -292,9 +323,10 @@ void Engine::MainLoop()
 	while(window->isOpen())
 	{
 	     frameCounter += frameSpeed * clock->restart().asSeconds();
+
     if((frameCounter >= switchFrame) )//& (player1->GetPosition() == player1->GetTarget()))
     {
-
+        std::cout << "test" << std::endl;
         ProcessInput();
 
 		Update();

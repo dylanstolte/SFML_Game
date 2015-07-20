@@ -1,6 +1,7 @@
 #ifndef _PLAYER_H
 #define _PLAYER_H
 
+#include "TextureManager.h"
 #include <SFML\Graphics.hpp>
 
 class Player
@@ -15,6 +16,7 @@ private:
 	//Target position camera is moving towards
 	sf::Vector2f target;
 
+
     float speed;
 
     	   //Player sprite
@@ -23,13 +25,17 @@ private:
 public:
     Player();//sf::Texture& texture);
     ~Player();
+    sf::Vector2i source;
 sf::Sprite playerSprite;
+sf::Sprite magicSprite;
 sf::Texture texture;
 sf::Vector2i rect;
+TextureManager* texturemanager;
     void Update();
     void Move(int x, int y);
     void GoTo(int x, int y);
     void SetRect(int x,int y);
+    void magicAnimation(TextureManager* texturemanager);
 
     sf::Vector2i GetPosition() { return sf::Vector2i((int)position.x, (int)position.y); }
     sf::Vector2i GetTarget() { return sf::Vector2i((int)target.x, (int)target.y); }
