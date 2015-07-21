@@ -5,6 +5,7 @@
 //int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, PWSTR pCmdLine, int nCmdShow)
 int main()
 {
+
 	Engine* engine = new Engine();
 
 	try
@@ -15,6 +16,6 @@ int main()
 	{
 		MessageBoxA(NULL, e, "Exception Occured", MB_OK | MB_ICONERROR);
 	}
-	return 1;
+	return 0;
 }
 
