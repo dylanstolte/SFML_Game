@@ -567,3 +567,67 @@
 	"SFML/Graphics.hpp"
 	<iostream>
 
+1437405882 source:c:\users\stolted\sfml_game\camera.cpp
+	<SFML\Graphics.hpp>
+	<math.h>
+	"Camera.h"
+	"Engine.h"
+
+1437405882 c:\users\stolted\sfml_game\camera.h
+	<SFML\Graphics.hpp>
+	"Tile.h"
+
+1437405882 c:\users\stolted\sfml_game\tile.h
+	"TextureManager.h"
+	<SFML/Graphics.hpp>
+
+1437405882 c:\users\stolted\sfml_game\texturemanager.h
+	<SFML/Graphics.hpp>
+	<vector>
+
+1437405882 c:\users\stolted\sfml_game\engine.h
+	<SFML\Graphics.hpp>
+	"TextureManager.h"
+	"Tile.h"
+	"Level.h"
+	"Camera.h"
+	"Player.h"
+
+1437405882 c:\users\stolted\sfml_game\level.h
+	<vector>
+	"Tile.h"
+
+1437427301 c:\users\stolted\sfml_game\player.h
+	"TextureManager.h"
+	<SFML\Graphics.hpp>
+
+1437488553 source:c:\users\stolted\sfml_game\engine.cpp
+	"Engine.h"
+	<SFML\Graphics.hpp>
+	<iostream>
+
+1437405882 source:c:\users\stolted\sfml_game\level.cpp
+	<vector>
+	"Level.h"
+	"Tile.h"
+
+1437405882 source:c:\users\stolted\sfml_game\main.cpp
+	<Windows.h>
+	"Engine.h"
+
+1437430744 source:c:\users\stolted\sfml_game\player.cpp
+	<SFML\Graphics.hpp>
+	<math.h>
+	"Player.h"
+	"Engine.h"
+
+1437405882 source:c:\users\stolted\sfml_game\texturemanager.cpp
+	"TextureManager.h"
+
+1437405882 source:c:\users\stolted\sfml_game\tile.cpp
+	"Tile.h"
+	<stdlib.h>
+	<time.h>
+	"SFML/Graphics.hpp"
+	<iostream>
+

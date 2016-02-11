@@ -2,6 +2,8 @@
 #include <SFML\Graphics.hpp>
 #include <iostream>
 
+using namespace std;
+
 Engine::Engine()
 {
 
@@ -246,6 +248,7 @@ void Engine::RenderFrame()
 
 	//tile
 	Tile* tile;
+	Tile* currentTile;
     int tileSize = 800;
 	window->clear();
 
@@ -319,6 +322,7 @@ void Engine::RenderFrame()
 
 void Engine::MainLoop()
 {
+    cout << "test" << endl;
 	//Loop until our window is closed
 	while(window->isOpen())
 	{
@@ -326,7 +330,7 @@ void Engine::MainLoop()
 
     if((frameCounter >= switchFrame) )//& (player1->GetPosition() == player1->GetTarget()))
     {
-        std::cout << "test" << std::endl;
+
         ProcessInput();
 
 		Update();
