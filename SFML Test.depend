@@ -513,7 +513,7 @@
 	<SFML\Graphics.hpp>
 	"Tile.h"
 
-1437405882 c:\users\stolted\git\sfml_game\tile.h
+1437515617 c:\users\stolted\git\sfml_game\tile.h
 	"TextureManager.h"
 	<SFML/Graphics.hpp>
 
@@ -533,11 +533,11 @@
 	<vector>
 	"Tile.h"
 
-1437427301 c:\users\stolted\git\sfml_game\player.h
+1437512304 c:\users\stolted\git\sfml_game\player.h
 	"TextureManager.h"
 	<SFML\Graphics.hpp>
 
-1437430679 source:c:\users\stolted\git\sfml_game\engine.cpp
+1437514225 source:c:\users\stolted\git\sfml_game\engine.cpp
 	"Engine.h"
 	<SFML\Graphics.hpp>
 	<iostream>
@@ -547,20 +547,21 @@
 	"Level.h"
 	"Tile.h"
 
-1437405882 source:c:\users\stolted\git\sfml_game\main.cpp
+1437489126 source:c:\users\stolted\git\sfml_game\main.cpp
 	<Windows.h>
 	"Engine.h"
 
-1437430744 source:c:\users\stolted\git\sfml_game\player.cpp
+1437513059 source:c:\users\stolted\git\sfml_game\player.cpp
 	<SFML\Graphics.hpp>
 	<math.h>
 	"Player.h"
 	"Engine.h"
+	"Level.h"
 
 1437405882 source:c:\users\stolted\git\sfml_game\texturemanager.cpp
 	"TextureManager.h"
 
-1437405882 source:c:\users\stolted\git\sfml_game\tile.cpp
+1437515701 source:c:\users\stolted\git\sfml_game\tile.cpp
 	"Tile.h"
 	<stdlib.h>
 	<time.h>

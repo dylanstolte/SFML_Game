@@ -3,6 +3,7 @@
 
 #include "Player.h"
 #include "Engine.h"
+#include "Level.h"
 
 Player::Player()//sf::Texture& texture)
 {
@@ -20,16 +21,37 @@ Player::Player()//sf::Texture& texture)
     position.y = 10;
     source.x = 0;
     source.y = 0;
+    currentTile.x = 0;
+    currentTile.y = 0;
+    magicCounter = false;
 }
 
 Player::~Player(){}
 
 void Player::magicAnimation(TextureManager* texturemanager)
 {
+    powerPosition.x = position.x;
+    powerPosition.y = position.y;
+
     magicSprite.setTexture(texturemanager->GetTexture(5));
-    magicSprite.setPosition(position.x+5,position.y+5);
+
+    magicSprite.setPosition(powerPosition.x,powerPosition.y);
+    magicCounter = true;
+
 
 };
+
+void Player::magicAnimationDraw(sf::RenderWindow* rw)
+{
+    magicSprite.setPosition(powerPosition.x,powerPosition.y);
+    magicSprite.setTextureRect(sf::IntRect(source.x * 32, source.y * 32, 32,32));
+
+    if(source.x * source.y == 33)
+        magicCounter = false;
+
+    rw->draw(magicSprite);
+//
+}
 //set sprite image to load
 void Player::SetRect(int x,int y)
 {
@@ -62,8 +84,6 @@ void Player::Draw(sf::IntRect rect,sf::RenderWindow* rw)
  playerSprite.setTextureRect(rect);
 
     rw->draw(playerSprite);
-    magicSprite.setTextureRect(sf::IntRect((source.x) * 32, source.y * 32, 32,32));
-    rw->draw(magicSprite);
 //
 //    sf::Texture texture;
 //

@@ -26,6 +26,9 @@ public:
     Player();//sf::Texture& texture);
     ~Player();
     sf::Vector2i source;
+    sf::Vector2i currentTile;
+    sf::Vector2i powerPosition;
+    bool magicCounter;
 sf::Sprite playerSprite;
 sf::Sprite magicSprite;
 sf::Texture texture;
@@ -41,6 +44,7 @@ TextureManager* texturemanager;
     sf::Vector2i GetTarget() { return sf::Vector2i((int)target.x, (int)target.y); }
     sf::Vector2i Getrect() { return sf::Vector2i((int)rect.x, (int)rect.y); }
     void Draw(sf::IntRect rect,sf::RenderWindow* rw);
+    void magicAnimationDraw(sf::RenderWindow* rw);
 
 };
 
